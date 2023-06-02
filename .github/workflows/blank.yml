@@ -1,0 +1,14 @@
+name: Hourly Meme Fetch
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Latest Meme
+        run: |
+          curl https://meme-api.com/gimme > latest_meme.json
+          echo "Latest meme fetched at $(date)"
